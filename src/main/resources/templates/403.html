@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="ISO-8859-1" />
+	<title>Access Denied!</title>
+</head>
+<body>
+	<h1 style="text-align: center;">I am sorry Dave, I'm afraid I can't let you on this page...</h1>
+	<form th:action="@{/welcome}" method="get">
+		<input type="submit" value="Back Home" />
+	</form>
+
+</body>
+</html>

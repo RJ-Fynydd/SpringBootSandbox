@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-  <title>Hello World!</title>
-  <link rel="stylesheet" th:href="@{/style.css}" />
-  <link rel="shortcut icon" th:href="@{/images/favicon.ico?v=1}" />
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Hello World!</title>
 </head>
-
 <body>
-  <h1>Hello world!</h1>
-</body>
+	<h1 th:inline="text">Welcome <span sec:authentication="name"></span>!</h1>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" />
+	</form>
 
+	<div sec:authorize="hasRole('ADMIN')">
+		<form th:action="@{/settings}" method="get">
+			<input type="submit" value="Settings" />
+		</form>
+	</div>
+</body>
 </html>
