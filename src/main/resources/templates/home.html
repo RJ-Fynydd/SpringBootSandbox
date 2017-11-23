@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head>
-  <title>Spring Security Example</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
-  <link rel="shortcut icon" th:href="@{/images/favicon.ico?v=1}" />
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-</head>
+    <head>
+        <title>Spring Security Example</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/homeStyle.css}" />
+        <link th:substituteby="baseTemplate :: head" />
+    </head>
 
-<body>
-  <div class="title"><h1>Welcome!</h1></div>
+    <body>
+        <div th:replace="baseTemplate :: header"></div>
 
-  <p class="title">Click <a th:href="@{/welcome}">here</a> to see a greeting.</p>
-  
-</body>
+        <div class="title"><h1>Welcome!</h1></div>
+
+        <p class="title">Click <a th:href="@{/welcome}">here</a> to see a greeting.</p>
+
+        <div th:replace="baseTemplate :: footer"></div>
+    </body>
 
 </html>

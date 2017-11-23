@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-	<meta charset="ISO-8859-1" />
-	<title>Access Denied!</title>
-</head>
-<body>
-	<h1 style="text-align: center;">I am sorry Dave, I'm afraid I can't let you on this page...</h1>
-	<form th:action="@{/welcome}" method="get">
-		<input type="submit" value="Back Home" />
-	</form>
 
-</body>
+    <head>
+        <title>Access Denied!</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/403Style.css}" />
+        <link th:substituteby="baseTemplate :: head" />
+    </head>
+
+    <body>
+        <h1 style="text-align: center;">I am sorry <span sec:authentication="name"></span>, I'm afraid I can't let you do that...</h1>
+
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/HAL9000.svg/1200px-HAL9000.svg.png"/>
+
+        <div style="margin: 0 auto">
+            <form th:action="@{/welcome}" method="get">
+                <input type="submit" value="Back Home" />
+            </form>
+        </div>
+
+    </body>
 </html>

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-	<meta charset="ISO-8859-1" />
-	<title>Settings Page</title>
-</head>
-<body>
-	<h1 style="text-align: center;">Welcome to the settings page!</h1>
-</body>
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Settings Page</title>
+        <link th:substituteby="baseTemplate :: head" />
+    </head>
+    <body>
+        <div th:replace="baseTemplate :: header"></div>
+
+        <h1 style="text-align: center;">Welcome to the settings page!</h1>
+
+        <div th:replace="baseTemplate :: footer"></div>
+    </body>
 </html>

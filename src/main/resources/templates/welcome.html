@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-<title>Hello World!</title>
-</head>
-<body>
-	<h1 th:inline="text">Welcome <span sec:authentication="name"></span>!</h1>
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="Sign Out" />
-	</form>
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Hello World!</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/welcomeStyle.css}" />
+        <link th:substituteby="baseTemplate :: head" />
+    </head>
+    <body>
+        <div th:replace="baseTemplate :: header"></div>
+        <h1 th:inline="text">Welcome <span sec:authentication="name"></span>!</h1>
 
-	<div sec:authorize="hasRole('ADMIN')">
-		<form th:action="@{/settings}" method="get">
-			<input type="submit" value="Settings" />
-		</form>
-	</div>
-</body>
+        <div class="logout">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Logout" />
+            </form>
+        </div>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <form th:action="@{/settings}" method="get">
+                <input type="submit" value="Settings" />
+            </form>
+        </div>
+        <div th:replace="baseTemplate :: footer"></div>
+    </body>
 </html>
