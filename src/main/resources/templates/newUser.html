@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Create New User</title>
+        <link rel="stylesheet" th:href="@{/newUserStyle.css}" />
+        <link th:substituteby="baseTemplate :: head" />
+    </head>
+    <body>
+        <div th:replace="baseTemplate :: header"></div>
+        <div><h1>Create New User Page</h1></div>
+
+        <div th:replace="baseTemplate :: footer"></div>
+    </body>
+</html>
