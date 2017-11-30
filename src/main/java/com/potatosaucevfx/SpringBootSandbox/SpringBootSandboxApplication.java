@@ -22,6 +22,7 @@ public class SpringBootSandboxApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootSandboxApplication.class, args);
 
+        /*
         int i = 0;
         while (i < 10) {
             String password = "";
@@ -31,17 +32,7 @@ public class SpringBootSandboxApplication {
             System.out.println(hashedPassword);
             i++;
         }
-
-    }
-
-    @Bean
-    public ITemplateResolver defaultTemplateResolver() {
-        FileTemplateResolver resolver = new FileTemplateResolver();
-        resolver.setSuffix(properties.getSuffix());
-        resolver.setPrefix(templatesRoot);
-        resolver.setTemplateMode(properties.getMode());
-        resolver.setCacheable(properties.isCache());
-        return resolver;
+         */
     }
 
 }

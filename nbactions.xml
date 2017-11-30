@@ -6,7 +6,28 @@
                 <packaging>jar</packaging>
             </packagings>
             <goals>
-                <goal>org.springframework.boot:spring-boot-maven-plugin:1.3.2.RELEASE:run</goal>
+                <goal>spring-boot:run</goal>
             </goals>
+            <properties>
+                
+                <Env.SPRING_OUTPUT_ANSI_ENABLED>always</Env.SPRING_OUTPUT_ANSI_ENABLED>
+                <Env.SPRING_DEVTOOLS_RESTART_TRIGGER_FILE>.nbRestartTrigger</Env.SPRING_DEVTOOLS_RESTART_TRIGGER_FILE>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <properties>
+                <run.jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address}</run.jvmArguments>
+                <jpda.listen>true</jpda.listen>
+                
+                <Env.SPRING_OUTPUT_ANSI_ENABLED>always</Env.SPRING_OUTPUT_ANSI_ENABLED>
+                <Env.SPRING_DEVTOOLS_RESTART_TRIGGER_FILE>.nbRestartTrigger</Env.SPRING_DEVTOOLS_RESTART_TRIGGER_FILE>
+            </properties>
         </action>
     </actions>
