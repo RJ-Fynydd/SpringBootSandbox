@@ -7,8 +7,19 @@
     </head>
     <body>
         <div th:replace="baseTemplate :: header"></div>
-        
-        <div id="yolo"><h1>Create New User Page</h1></div>
+
+        <div class="newUser-page">
+
+            <div class="form">
+                <h3>Add New User</h3>
+                <div id="errorMessage" th:if="${error} != null" th:text="${error}" />
+                <form th:action="@{/home}" th:object="${user}" method="post">
+                    <input type="text" placeholder="enter username" th:field="*{username}"/>
+                    <input type="password" placeholder="enter password" th:field="*{password}"/>
+                    <button>Create</button>
+                </form>
+            </div>
+        </div>
 
         <div th:replace="baseTemplate :: footer"></div>
     </body>

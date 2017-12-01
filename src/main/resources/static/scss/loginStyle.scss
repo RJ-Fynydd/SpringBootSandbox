@@ -91,3 +91,18 @@
 .container .info span .fa {
     color: #EF3B3A;
 }
+
+#newAccountMessage {
+    margin-top: 5px;
+    font-size: 13px;
+    color: $BG-Color1;
+
+    a {
+        color: $Link-Color;
+        text-decoration: none;
+    }
+    a:hover {
+        font-weight: bold;
+    }
+
+}

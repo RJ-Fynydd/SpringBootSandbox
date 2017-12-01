@@ -30,4 +30,11 @@
                 <Env.SPRING_DEVTOOLS_RESTART_TRIGGER_FILE>.nbRestartTrigger</Env.SPRING_DEVTOOLS_RESTART_TRIGGER_FILE>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-Sass Watch</actionName>
+            <displayName>Sass Watch</displayName>
+            <goals>
+                <goal>sass:watch</goal>
+            </goals>
+        </action>
     </actions>
