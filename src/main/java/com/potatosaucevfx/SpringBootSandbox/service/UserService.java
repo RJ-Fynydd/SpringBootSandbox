@@ -29,7 +29,7 @@ public class UserService {
     public boolean isUserValid(User user) {
         if (!user.getUsername().equalsIgnoreCase("") && user.getUsername() != null) {
             if (!user.getPassword().equalsIgnoreCase("") && user.getPassword() != null) {
-                String SQL = "SELECT * from springTest.users where username='" + user.getUsername() + "'";
+                String SQL = "SELECT username FROM springTest.users WHERE username='" + user.getUsername() + "'";
                 List<User> users = jdbcTemplate.query(SQL, new UserMapper());
                 if (users.isEmpty()) {
                     return true;
@@ -42,7 +42,7 @@ public class UserService {
     }
 
     public String getUserErrorMessage(User user) {
-        String SQL = "SELECT * from springTest.users where username='" + user.getUsername() + "'";
+        String SQL = "SELECT username FROM springTest.users WHERE username='" + user.getUsername() + "'";
         List<User> users = jdbcTemplate.query(SQL, new UserMapper());
         if (!users.isEmpty()) {
             return "Username already in use";
@@ -56,7 +56,7 @@ public class UserService {
     }
 
     public User getUserByUsername(String username) {
-        String SQL = "SELECT * from springTest.users where username='" + username + "'";
+        String SQL = "SELECT username FROM springTest.users WHERE username='" + username + "'";
         List<User> users = jdbcTemplate.query(SQL, new UserMapper());
 
         return !users.isEmpty() ? users.get(0) : null;
