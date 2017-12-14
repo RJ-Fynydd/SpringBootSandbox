@@ -16,10 +16,10 @@
 
             <div class="form">
                 <div id="errorMessage" th:if="${param.error}">
-                    Invalid username and password.
+                    Invalid username or password
                 </div>
                 <div id="infoMessage" th:if="${param.logout}">
-                    You have been logged out.
+                    You have been logged out
                 </div>
                 <form class="login-form" th:action="@{/login}" method="post">
                     <input type="text" placeholder="username" name="username"/>

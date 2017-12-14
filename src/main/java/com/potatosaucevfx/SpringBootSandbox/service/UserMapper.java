@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.potatosaucevfx.SpringBootSandbox.service;
 
 import com.potatosaucevfx.SpringBootSandbox.model.User;
@@ -23,6 +18,7 @@ public class UserMapper implements RowMapper {
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password"));
         user.setEnabled(rs.getBoolean("enabled"));
+        user.setPermission(rs.getString("role"));
 
         return user;
     }

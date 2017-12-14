@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book List</title>
+        <link th:substituteby="baseTemplate :: head" />
+        <link rel="stylesheet" th:href="@{/booksStyle.css}" />
+    </head>
+    <body>
+        <div th:replace="baseTemplate :: header"></div>
+
+        <div id="title"><h1>Books Available</h1></div>
+
+        <table id="bookTable">
+            <tr>
+                <th>Cover</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Publish Year</th>
+                <th>Added By</th>
+            </tr>
+            <tr th:each="books : ${books}">
+                <td><img th:src="${books.getImagePath()}"/></td>
+                <td th:text="${books.getBookNumber()}">N/A</td>
+                <td th:text="${books.getName()}">N/A</td>
+                <td th:text="${books.getAuthor()}">N/A</td>
+                <td th:text="${books.getPublisher()}">N/A</td>
+                <td th:text="${books.getPublishYear()}">N/A</td>
+                <td th:text="${books.getUserAdded()}">N/A</td>
+            </tr>
+        </table>
+
+        <div th:replace="baseTemplate :: footer"></div>
+    </body>
+</html>

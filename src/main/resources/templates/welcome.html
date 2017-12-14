@@ -11,16 +11,18 @@
         <div th:replace="baseTemplate :: header"></div>
         <h1 th:inline="text">Welcome <span sec:authentication="name"></span>!</h1>
 
-        <div class="logout">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout" />
-            </form>
-        </div>
+        <div id="buttonsPane">
+            <div id="logoutButton">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Logout" />
+                </form>
+            </div>
 
-        <div sec:authorize="hasRole('ADMIN')">
-            <form th:action="@{/settings}" method="get">
-                <input type="submit" value="Settings" />
-            </form>
+            <div id="settingsButton" sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/settings}" method="get">
+                    <input type="submit" value="Settings" />
+                </form>
+            </div>
         </div>
         <div th:replace="baseTemplate :: footer"></div>
     </body>

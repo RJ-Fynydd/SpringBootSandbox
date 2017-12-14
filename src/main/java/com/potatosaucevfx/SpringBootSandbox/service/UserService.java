@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.potatosaucevfx.SpringBootSandbox.service;
 
 import com.potatosaucevfx.SpringBootSandbox.model.User;
@@ -29,7 +24,7 @@ public class UserService {
     public boolean isUserValid(User user) {
         if (!user.getUsername().equalsIgnoreCase("") && user.getUsername() != null) {
             if (!user.getPassword().equalsIgnoreCase("") && user.getPassword() != null) {
-                String SQL = "SELECT username FROM springTest.users WHERE username='" + user.getUsername() + "'";
+                String SQL = "SELECT username FROM users WHERE username='" + user.getUsername() + "'";
                 List<User> users = jdbcTemplate.query(SQL, new UserMapper());
                 if (users.isEmpty()) {
                     return true;
@@ -42,7 +37,7 @@ public class UserService {
     }
 
     public String getUserErrorMessage(User user) {
-        String SQL = "SELECT username FROM springTest.users WHERE username='" + user.getUsername() + "'";
+        String SQL = "SELECT username FROM users WHERE username='" + user.getUsername() + "'";
         List<User> users = jdbcTemplate.query(SQL, new UserMapper());
         if (!users.isEmpty()) {
             return "Username already in use";
@@ -56,9 +51,8 @@ public class UserService {
     }
 
     public User getUserByUsername(String username) {
-        String SQL = "SELECT username FROM springTest.users WHERE username='" + username + "'";
+        String SQL = "SELECT users.username, users.password, users.enabled, user_roles.role FROM users INNER JOIN user_roles ON users.username = user_roles.username WHERE users.username = '" + username + "'";
         List<User> users = jdbcTemplate.query(SQL, new UserMapper());
-
         return !users.isEmpty() ? users.get(0) : null;
     }
 
@@ -69,11 +63,16 @@ public class UserService {
         }
 
         try {
-            String SQL = "INSERT INTO springTest.users(username,password,enabled) VALUES ('" + user.getUsername() + "','" + passwordEncoder.encode(user.getPassword()) + "'," + user.isEnabled() + ")";
-            jdbcTemplate.execute(SQL);
-            SQL = "INSERT INTO springTest.user_roles (username, role) VALUES ('" + user.getUsername() + "', 'ROLE_" + user.getPermission() + "')";
-            jdbcTemplate.execute(SQL);
-            return true;
+
+            if (!isUserValid(user)) {
+                String SQL = "INSERT INTO users(username,password,enabled) VALUES ('" + user.getUsername() + "','" + passwordEncoder.encode(user.getPassword()) + "'," + user.isEnabled() + ")";
+                jdbcTemplate.execute(SQL);
+                SQL = "INSERT INTO user_roles (username, role) VALUES ('" + user.getUsername() + "', 'ROLE_" + user.getPermission() + "')";
+                jdbcTemplate.execute(SQL);
+                return true;
+            } else {
+                return false;
+            }
         } catch (DataAccessException e) {
             System.out.println(e.getMessage());
             return false;
