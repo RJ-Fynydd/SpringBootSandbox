@@ -13,13 +13,20 @@
     <body>
         <div th:fragment="header" id="spacer"/>
 
-        <header th:fragment="header" id="header">
+        <div th:fragment="header" class="header">
             <h1>Insert Header Here...</h1>
-        </header>>
+        </div>
+        <div th:fragment="headerWithNoTopSpacer" class="header">
+            <h1>Insert Header Here...</h1>
+        </div>
 
 
-        <footer th:fragment="footer" id="footer">
+        <div th:fragment="reacticeFoot" class="reacticeFooter">
             <h1>Insert footer here...</h1>
-        </footer>
+        </div>
+
+        <div th:fragment="footer" class="baseFooter">
+            <h1>Insert footer here...</h1>
+        </div>
     </body>
 </html>

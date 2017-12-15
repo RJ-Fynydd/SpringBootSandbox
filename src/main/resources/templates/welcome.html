@@ -23,6 +23,12 @@
                     <input type="submit" value="Settings" />
                 </form>
             </div>
+
+            <div id="booksButton">
+                <form th:action="@{/books}" method="get">
+                    <input type="submit" value="Books" />
+                </form>
+            </div>
         </div>
         <div th:replace="baseTemplate :: footer"></div>
     </body>

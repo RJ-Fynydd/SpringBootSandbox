@@ -7,7 +7,9 @@
     </head>
     <body>
         <div th:replace="baseTemplate :: header"></div>
-
+        <form style="margin: 0 auto;" th:action="@{/addBook}" method="get">
+            <input type="submit" value="Add a Book" />
+        </form>
         <div id="title"><h1>Books Available</h1></div>
 
         <table id="bookTable">
@@ -21,7 +23,7 @@
                 <th>Added By</th>
             </tr>
             <tr th:each="books : ${books}">
-                <td><img th:src="${books.getImagePath()}"/></td>
+                <td><img th:src="${books.getImagePath()}" /></td>
                 <td th:text="${books.getBookNumber()}">N/A</td>
                 <td th:text="${books.getName()}">N/A</td>
                 <td th:text="${books.getAuthor()}">N/A</td>
@@ -31,6 +33,6 @@
             </tr>
         </table>
 
-        <div th:replace="baseTemplate :: footer"></div>
+        <div th:replace="baseTemplate :: reacticeFoot"></div>
     </body>
 </html>

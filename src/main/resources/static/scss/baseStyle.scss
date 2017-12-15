@@ -1,17 +1,15 @@
 @import "_colors.scss";
 
-html {
-    height: 100%;
-}
 
 body {
+    height: 100%;
     background-repeat: no-repeat;
     background: $BG-Color1; /* fallback for old browsers */
     background: -webkit-linear-gradient(top, $BG-Color1, $BG-Color2);
     background: -moz-linear-gradient(top, $BG-Color1, $BG-Color2);
     background: -o-linear-gradient(top, $BG-Color1, $BG-Color2);
     background: linear-gradient(to top, $BG-Color1, $BG-Color2);
-    font-family: "Roboto", sans-serif;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -20,7 +18,7 @@ body {
     margin-bottom: 85px;
 }
 
-#header {
+.header {
     text-align: center;
     position: absolute;
     left: 0;
@@ -30,7 +28,16 @@ body {
 
 }
 
-#footer {
+.reacticeFooter {
+    text-align: center;
+    position: static;
+    left: 0;
+    bottom: 0;
+    background-color: $Footer-Color;
+    width: 100%;
+}
+
+.baseFooter {
     text-align: center;
     position: absolute;
     left: 0;

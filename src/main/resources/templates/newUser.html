@@ -13,7 +13,7 @@
             <div class="form">
                 <h3>Add New User</h3>
                 <div id="errorMessage" th:if="${error} != null" th:text="${error}" />
-                <form th:action="@{/home}" th:object="${user}" method="post">
+                <form th:action="@{/welcome}" th:object="${user}" method="post">
                     <input type="text" placeholder="enter username" th:field="*{username}"/>
                     <input type="password" placeholder="enter password" th:field="*{password}"/>
                     <button>Create</button>

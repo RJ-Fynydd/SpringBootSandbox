@@ -21,7 +21,7 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public boolean isUserValid(User user) {
+    public boolean isUserAvalible(User user) {
         if (!user.getUsername().equalsIgnoreCase("") && user.getUsername() != null) {
             if (!user.getPassword().equalsIgnoreCase("") && user.getPassword() != null) {
                 String SQL = "SELECT username FROM users WHERE username='" + user.getUsername() + "'";
@@ -64,7 +64,7 @@ public class UserService {
 
         try {
 
-            if (!isUserValid(user)) {
+            if (isUserAvalible(user)) {
                 String SQL = "INSERT INTO users(username,password,enabled) VALUES ('" + user.getUsername() + "','" + passwordEncoder.encode(user.getPassword()) + "'," + user.isEnabled() + ")";
                 jdbcTemplate.execute(SQL);
                 SQL = "INSERT INTO user_roles (username, role) VALUES ('" + user.getUsername() + "', 'ROLE_" + user.getPermission() + "')";
@@ -74,7 +74,7 @@ public class UserService {
                 return false;
             }
         } catch (DataAccessException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }

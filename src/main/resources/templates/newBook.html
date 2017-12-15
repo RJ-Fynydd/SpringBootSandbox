@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create New Book</title>
+        <link rel="stylesheet" th:href="@{/newBookStyle.css}" />
+        <link th:substituteby="baseTemplate :: head" />
+    </head>
+    <body>
+        <div th:replace="baseTemplate :: headerWithNoTopSpacer"></div>
+
+
+        <div class="newBook-page">
+            <div class="form">
+                <h3>Add New Book</h3>
+                <div id="errorMessage" th:if="${error} != null" th:text="${error}" />
+                <form th:action="@{/books}" th:object="${book}" method="post">
+                    <input type="text" placeholder="enter book number" th:field="*{bookNumber}"/>
+                    <input type="text" placeholder="enter book name" th:field="*{name}"/>
+                    <input type="text" placeholder="enter book author" th:field="*{author}"/>
+                    <input type="text" placeholder="enter book year published" th:field="*{publishYear}"/>
+                    <input type="text" placeholder="enter book publisher name" th:field="*{publisher}"/>
+                    <input type="text" placeholder="enter book image url" th:field="*{imagePath}"/>
+                    <button>Add Book</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div th:replace="baseTemplate :: footer"></div>
+    </body>
+</html>

@@ -10,7 +10,7 @@ public class Book {
     private String bookNumber;
     private String name;
     private String author;
-    private int publishYear;
+    private Integer publishYear;
     private String publisher;
     private String imagePath;
     private String userAdded;
@@ -77,7 +77,7 @@ public class Book {
         this.author = author;
     }
 
-    public int getPublishYear() {
+    public Integer getPublishYear() {
         return publishYear;
     }
 

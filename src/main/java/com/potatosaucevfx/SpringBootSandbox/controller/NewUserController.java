@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
  * @author PotatoSauceVFX
  */
 @Controller
@@ -29,16 +28,16 @@ public class NewUserController {
         return mav;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
     public ModelAndView reciveNewUserPage(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") User user) {
-
-        if (service.isUserValid(user)) {
-            ModelAndView modelAndView = new ModelAndView("home");
-            service.addUserToDatabase(user);
+        System.out.println(user.toString());
+        if (service.isUserAvalible(user)) {
+            ModelAndView modelAndView = new ModelAndView("login");
+            System.out.println(service.addUserToDatabase(user));
             return modelAndView;
         } else {
-            ModelAndView modelAndView = new ModelAndView("newUser");
-            modelAndView.addObject("user", new User());
+            ModelAndView modelAndView = new ModelAndView("redirect:/newUser");
+            modelAndView.addObject("user", user);
             modelAndView.addObject("error", service.getUserErrorMessage(user));
             return modelAndView;
         }
